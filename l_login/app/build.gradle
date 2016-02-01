@@ -48,9 +48,9 @@ android {
     }
 //Ç©Ãû
     signingConfigs {
-        debug {
-            storeFile file("C:/Users/lenovo/.android/debug.keystore")
-        }
+       // debug {
+        //    storeFile file("C:/Users/lenovo/.android/debug.keystore")
+      //  }
         relealse {
             storeFile file("C:/Users/lenovo/demo.jks")
             // storeFile file("C:/Users/lenovo/.android/debug.keystore")
