@@ -4,20 +4,23 @@ buildscript {
     repositories {
         jcenter()
     }
+    //构建过程需要依赖的库
     dependencies {
+        //声明的是gradle插件的版本
         classpath 'com.android.tools.build:gradle:1.5.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
-
+//这里面配置整个项目依赖的仓库,这样每个module就不用配置仓库了
 allprojects {
     repositories {
         jcenter()
     }
 }
 
+/*buildscript中的仓库是gradle脚本自身需要的资源，而allprojects下的仓库是项目所有模块需要的资源。*/
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
