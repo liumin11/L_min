@@ -95,12 +95,6 @@ android {   //构建android项目的所有配置都在这里完成
     }
 }
 
-
-
-
-
-
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
@@ -108,3 +102,19 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
 }
 
+apply plugin: "findbugs"
+
+
+task findbugs(type: FindBugs) {
+    //toolVersion = "2.0.1"
+    ignoreFailures = true
+    effort = "max"
+    reportLevel = "low"
+    classes = files("build/intermediates/classes")
+    source = fileTree('src/main/java/')
+    classpath = files()
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
