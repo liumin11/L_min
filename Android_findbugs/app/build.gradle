@@ -1,23 +1,105 @@
 apply plugin: 'com.android.application'
 
-android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
 
+
+android {   //构建android项目的所有配置都在这里完成
+    compileSdkVersion 23
+    buildToolsVersion "21.1.2"
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            /* resources.srcDirs = ['src/main/res']
+             aidl.srcDirs = ['src']
+             renderscript.srcDirs = ['src']*/
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
+        }
+
+        instrumentTest.setRoot('tests')
+
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
     defaultConfig {
-        applicationId "com.example.lenovo.android_findbugs"
+        applicationId "com.example.lenovo.ttest1"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+
+
+    signingConfigs {
+        debug {
+            storeFile file("C:/Users/lenovo/.android/debug.keystore")
+        }
+        relealse {
+            storeFile file("C:/Users/lenovo/demo.jks")
+            // storeFile file("C:/Users/lenovo/.android/debug.keystore")
+            storePassword "123456"
+            keyAlias "demo1"
+            keyPassword "123456"
         }
     }
+
+
+    buildTypes {
+        //   release {
+        //     signingConfig signingConfigs.myConfig
+        // }
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            //加载默认混淆配置文件 progudard-android.txt在sdk目录里面
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.relealse
+        }
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = outputFile.name.replace(".apk", "-${defaultConfig.versionName}.apk")
+                    output.outputFile = new File(outputFile.parent, fileName)
+                }
+            }
+        }
+    }
+
+//渠道Flavors
+    productFlavors {
+        //  GooglePlay {}
+        xiaomi { manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"] }
+//
+    }
 }
+
+
+
+
+
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -25,3 +107,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
 }
+
