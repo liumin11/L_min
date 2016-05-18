@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7eab95"
+    android:gravity="center"
+    >
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="            恭喜你登录成功啦"
+            android:textStyle="normal"
+            android:textSize="25dp"
+            />
+    </TableRow>
+    <TableRow></TableRow>>
+    <TableRow>
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/back"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="点击我返回哦"
+            android:textColor="#2d80ce"
+            />
+    </TableRow>
+</TableLayout>
