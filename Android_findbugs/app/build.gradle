@@ -114,7 +114,7 @@ task findbugs(type: FindBugs) {
     source = fileTree('src/main/java/')
     classpath = files()
     reports {
-        xml.enabled = false
-        html.enabled = true
+        xml.enabled = true
+        html.enabled = false
     }
 }
