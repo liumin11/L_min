@@ -22,7 +22,7 @@ android {   //构建android项目的所有配置都在这里完成
         release.setRoot('build-types/release')
     }
     defaultConfig {
-        applicationId "com.example.lenovo.ttest1"
+        applicationId "com.example.lenovo.android_findbugs"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -48,9 +48,6 @@ android {   //构建android项目的所有配置都在这里完成
 
 
     buildTypes {
-        //   release {
-        //     signingConfig signingConfigs.myConfig
-        // }
         debug {
             // 显示Log
             buildConfigField "boolean", "LOG_DEBUG", "true"
@@ -75,6 +72,7 @@ android {   //构建android项目的所有配置都在这里完成
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //签名
             signingConfig signingConfigs.relealse
+
         }
         applicationVariants.all { variant ->
             variant.outputs.each { output ->
@@ -103,7 +101,6 @@ dependencies {
 }
 
 apply plugin: "findbugs"
-
 
 task findbugs(type: FindBugs) {
     //toolVersion = "2.0.1"
