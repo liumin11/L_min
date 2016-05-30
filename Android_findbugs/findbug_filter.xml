@@ -34,8 +34,8 @@
             <Bug code="IJU" />
         </Not>
     </Match>-->
-    <Match>
+  <!--  <Match>
         <class name="~.*\.*R"/>
-        </Match>>
+        </Match>-->
 </FindBugsFilter>
 
