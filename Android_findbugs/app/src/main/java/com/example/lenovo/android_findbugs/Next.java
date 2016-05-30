@@ -22,4 +22,8 @@ public class Next extends Activity{
             }
         });
     }
+
+    public void initPushOnActivity(Context context) {
+        UMengPolicy.getInstance().initPushOnActivity(context);
+    }
 }
