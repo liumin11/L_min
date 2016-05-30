@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FindBugsFilter>
     <!-- android-support-v4.jar：包过滤 -->
-    <Match>
+    <!--<Match>
         <Package name="~android\.support\.v4.*" />
     </Match>
-
+-->
 
     <!-- 类过滤、方法 -->
-    <Match>
+  <!--  <Match>
         <Class name="com.opencdk.MusicActivity" />
         <Method name="getMusicName" />
     </Match>
     <Match>
         <Class name="com.opencdk.VideoActivity"  />
     </Match>
-
+-->
 
     <!-- Match all doublecheck violations in these methods of "AnotherClass". -->
     <Match>
@@ -28,12 +28,12 @@
     </Match>
 
     <!-- All bugs in test classes, except for JUnit-specific bugs -->
-    <Match>
+    <!--<Match>
         <Class name="~.*\.*Test" />
         <Not>
             <Bug code="IJU" />
         </Not>
-    </Match>
+    </Match>-->
     <Match>
         <class name="~.*\.*R"/>
         </Match>>
