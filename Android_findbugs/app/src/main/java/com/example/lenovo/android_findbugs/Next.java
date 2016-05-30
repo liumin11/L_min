@@ -1,6 +1,7 @@
 package com.example.lenovo.android_findbugs;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,6 @@ public class Next extends Activity{
     }
 
     public void initPushOnActivity(Context context) {
-        UMengPolicy.getInstance().initPushOnActivity(context);
+
     }
 }
